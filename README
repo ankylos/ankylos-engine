@@ -2,6 +2,10 @@
 
 The Ankylos Search Engine is a search engine designed not just for accurate and quick search results but also on secondary data perhaps related to a single search.
 
+# Crawler
+
+The ankylos crawler is within the [ankylos-crawler repository](https://github.com/ankylos/ankylos-crawler)
+
 # Developers
 
 Myself
