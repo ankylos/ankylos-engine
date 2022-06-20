@@ -1,6 +1,7 @@
 package main
 
 import (
+    "encoding/json"
     "fmt"
     "io"
     "log"
@@ -23,10 +24,27 @@ func main() {
 
     mux = make(map[string]func(http.ResponseWriter, *http.Request))
     mux["/tmp"] = Tmp
+    mux["/"] = JsonAPI
     err := server.ListenAndServe()
     if err != nil {
         log.Fatal(err)
     }
+}
+
+type Post struct {
+    Title string `json:"Title"`
+    Author string `json:"Author"`
+    Text string `json:"Text"`
+}
+
+func JsonAPI(w http.ResponseWriter, r *http.Request) {
+    posts := []Post {
+        Post{"Post one", "John", "First Post"},
+        Post{"Post two", "Robert", "Second Post"},
+        Post{"Post three", "Who", "Third Post"},
+    }
+
+    json.NewEncoder(w).Encode(posts)
 }
 
 type myHandler struct{}
