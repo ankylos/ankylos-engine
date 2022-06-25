@@ -8,3 +8,7 @@ The Ankylos Search Engine is a search engine designed not just for accurate and 
 
 2. Run engine
  - `$ go run main.go`
+
+3. Build engine to right architecture
+ - `$ go build`
+ - `$ ./{exec_file}
