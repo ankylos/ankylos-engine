@@ -23,7 +23,6 @@ func main() {
     fmt.Println("Server Listening on port", addr)
 
     mux = make(map[string]func(http.ResponseWriter, *http.Request))
-    mux["/tmp"] = Tmp
     mux["/"] = JsonAPI
     err := server.ListenAndServe()
     if err != nil {
@@ -40,7 +39,6 @@ type Post struct {
 func JsonAPI(w http.ResponseWriter, r *http.Request) {
     // Example: add Post structs
     posts := []Post {}
-
     json.NewEncoder(w).Encode(posts)
 }
 
@@ -52,8 +50,4 @@ func (*myHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
         return
     }
     io.WriteString(w, "URL: " + r.URL.String())
-}
-
-func Tmp(w http.ResponseWriter, r *http.Request) {
-    io.WriteString(w, "version 3")
 }
