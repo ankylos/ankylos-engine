@@ -38,11 +38,8 @@ type Post struct {
 }
 
 func JsonAPI(w http.ResponseWriter, r *http.Request) {
-    posts := []Post {
-        Post{"Post one", "John", "First Post"},
-        Post{"Post two", "Robert", "Second Post"},
-        Post{"Post three", "Who", "Third Post"},
-    }
+    // Example: add Post structs
+    posts := []Post {}
 
     json.NewEncoder(w).Encode(posts)
 }
